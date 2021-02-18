@@ -4,7 +4,7 @@
 #define INCLUDE_OTA_PUSH
 
 // Whether to include DEBUG features in the code
-#define INCLUDE_DEBUG
+//#define INCLUDE_DEBUG
 // Which serial port to use for debug ouput (usually Serial1)
 #define SER Serial1
 

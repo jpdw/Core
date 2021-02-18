@@ -22,7 +22,9 @@
 //extern SoftwareSerial swSer1;
 //#endif
 
-RemoteDebug Debug;
+#ifdef INCLUDE_DEBUG
+  RemoteDebug Debug;
+#endif
 
 //#include "globals.h"
 
@@ -51,8 +53,8 @@ void Mlog::begin(char * deviceIdPtr){
 
 void Mlog::startRemoteDebug(){
     // Initialize RemoteDebug
-
-	Debug.begin("RenoteDebug"); // Initialize the WiFi server
+#ifdef INCLUDE_DEBUG
+	Debug.begin("RemoteDebug"); // Initialize the WiFi server
 
     Debug.setResetCmdEnabled(true); // Enable the reset command
 
@@ -60,7 +62,7 @@ void Mlog::startRemoteDebug(){
 	Debug.showColors(true); // Colors
 
     this->log("RemoteDebug started");
-
+#endif
     // End off setup
 }
 
@@ -175,5 +177,7 @@ void Mlog::log(char *str, ...)
 
 
 void Mlog::handle(){
+#ifdef INCLUDE_DEBUG
     Debug.handle();
+#endif
 }
